@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <title>Relatório 3</title>
+</head>
+
+<body>
+    
+    <header>
+        <a href="../index.html"><img class="ufabc" src="../assets/img/ufabc.png" alt="ufabc logo"></a>
+        <h1>Pixel Rangers</h1>
+        <h2>Relatório 3 - Cameras Estereo</h2>
+
+        <ul>
+            <li>Caio Vilor Brandão</li>
+            <li>Gustavo Henrique Germano Ledandeck</li>
+            <li>Lucas Pereira de Medeiros</li>
+        </ul>
+        <p>Data de realização dos experimentos: 7 de julho de 2025</p>
+        <p>Data de publicação do relatório: 18 de julho de 2025</p>
+        
+    </header>
+
+    <main>
+        <h3>Introdução</h3>
+        <p class="resumo">A estereoscopia é uma técnica fundamental na reconstrução tridimensional de cenas a partir de imagens obtidas por câmeras posicionadas em diferentes pontos de vista. Com base na geometria epipolar, é possível estabelecer correspondência entre pontos de duas imagens e inferir a profundidade relativa dos objetos na cena. Este experimento visa proporcionar uma compreensão prática e teórica dos conceitos de visão estéreo e calibração de câmeras, por meio da construção de um sistema de captura 3D utilizando duas webcams.</p>
+        <p class="resumo">A atividade envolve o estudo prévio dos fundamentos da estereoscopia, a montagem de um sistema de câmera estéreo, a execução de algoritmos de calibração e reconstrução 3D com uso da biblioteca OpenCV, e a produção de um vídeo anáglifo tridimensional. Ao final do experimento, espera-se que os alunos compreendam a importância da calibração, dos parâmetros intrínsecos e extrínsecos da câmera, e dos desafios da percepção visual em sistemas computacionais de visão.</p>
+
+        <h3>Procedimentos experimentais</h3>
+        <h3>Parte 2</h3>
+        <p class="resumo">Seguindo as instruções do tutorial indicado, duas webcams idênticas foram montadas paralelamente sobre uma superfície firme, com aproximadamente 5 cm de distância entre seus eixos ópticos. As câmeras foram fixadas para garantir que não houvesse deslocamento relativo durante os testes e calibrações. Todos os detalhes do processo de montagem, incluindo alinhamento, distância e fixação, estão disponíveis no site <a href="https://learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/">https://learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/</a>.</p>
+        
+        <h3>Parte 3</h3>
+        <p class="resumo">Os códigos disponibilizados no repositório do projeto foram utilizados inicialmente com imagens de exemplo para entender o processo de calibração e reconstrução 3D.</p>
+        <p class="resumo">Esses códigos estão disponíveis para download em <a href="https://github.com/spmallick/learnopencv/tree/master/stereo-camera">https://github.com/spmallick/learnopencv/tree/master/stereo-camera</a> e devem ser compilados conforme instruções no site.</p>
+        <p class="resumo">As webcams montadas foram utilizadas para capturar entre 10 e 15 imagens de um padrão de calibração (tabuleiro xadrez). O código foi modificado para processar essas imagens e gerar os parâmetros de calibração salvos em arquivos XML.</p>
+        <p class="resumo">Após a calibração, foi implementada a visualização em tempo real da cena 3D e a gravação de um vídeo anáglifo com duração entre 10 e 20 segundos. O vídeo foi convertido para o formato MP4.</p>
+        <p class="resumo">Os parâmetros da calibração foram apresentados em forma de matrizes e vetores. A equipe analisou os valores obtidos, a qualidade da visualização ao vivo e do vídeo gravado, além de relatar percepções individuais em relação à profundidade e realismo das imagens estereoscópicas.</p>
+
+        <div id="popup" class="popup">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <img class="popup-content" id="expandedImage">
+            <div id="caption"></div>
+        </div>
+
+
+
+        <h3>Análise e discussão dos estudos realizados</h3>
+        <h3>Parte 3 - B</h3>
+        <p class="resumo">Responda: consulte a teoria da calibração e correção de distorção e o exemplo
+        executado, e com isso descreva todos os parametros necessários para a camera
+        estéreo.</p>
+        <p class="resumo">Os parâmetros necessários para a câmera estéreo, de acordo com a teoria da calibração e correção de distorção e com base no exemplo executado, são: as matrizes intrínsecas de cada câmera (mtxL e mtxR), que definem a distância focal e o centro óptico; os vetores de distorção (distL e distR), responsáveis por corrigir imperfeições ópticas da lente; a matriz de rotação (Rot) e o vetor de translação (Trns), que definem a relação espacial entre as duas câmeras; a matriz essencial (Emat) e a matriz fundamental (Fmat), utilizadas na geometria epipolar para correspondência de pontos; as matrizes de retificação (rect_l e rect_r) e de projeção (proj_mat_l e proj_mat_r), que alinham as imagens nos mesmos planos; e a matriz de disparidade (Q), usada para estimar profundidade. Além disso, os mapas de retificação (Left_Stereo_Map_x/y e Right_Stereo_Map_x/y) são essenciais para corrigir e alinhar as imagens capturadas, sendo estes os únicos parâmetros efetivamente salvos no arquivo XML.</p>
+
+        <h3>Parte 3 - C</h3>
+        <p class="resumo">Programa modificado para obter fotos de calibração: <a href="download/capture_images.py">capture_images.py</a></p>
+        <p class="resumo">Fotos tiradas (SteroL):</p>
+            <div class="gallery">
+                <img src="img/Lucas_Left_1.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_2.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_3.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_4.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_5.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_6.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_7.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_8.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_9.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_10.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_11.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_12.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_13.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_14.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Left_15.png" class="perfil" onclick="expandImage(this)">
+            </div>
+        <p class="resumo">Fotos tiradas (SteroR):</p>
+            <div class="gallery">
+                <img src="img/Lucas_Right_1.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_2.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_3.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_4.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_5.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_6.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_7.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_8.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_9.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_10.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_11.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_12.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_13.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_14.png" class="perfil" onclick="expandImage(this)">
+                <img src="img/Lucas_Right_15.png" class="perfil" onclick="expandImage(this)">
+            </div>
+
+        <p class="resumo">Programa modificado para apresentar as imagens da câmera estéreo ao vivo: <a href="download/movie3d_abc.py">movie3d_abc.py</a></p>
+        <P class="resumo">Responda: liste todos os parâmetros e valores obtidos para sua câmera estéreo,
+        colocando-os nas formas de matrizes e vetores. Quais destes parâmetros forma
+        salvos no arquivo de parâmetros de calibração (xml)?</P>
+        <p class="resumo">Durante a calibração da câmera estéreo, foram obtidas as matrizes intrínsecas (mtxL, mtxR), os vetores de distorção (distL, distR), a matriz de rotação (Rot), o vetor de translação (Trns), a matriz essencial (Emat), a matriz fundamental (Fmat), as matrizes de retificação e projeção (rect_l, rect_r, proj_mat_l, proj_mat_r) e a matriz de disparidade (Q).</p>
+        <p class="resumo">Os únicos parâmetros salvos no arquivo params_py.xml foram os mapas de retificação Left_Stereo_Map_x, Left_Stereo_Map_y, Right_Stereo_Map_x e Right_Stereo_Map_y, que são utilizados para corrigir a distorção das imagens e alinhá-las corretamente para visualização 3D</p>
+
+        <h3>Parte 3 - D</h3>
+        <p class="resumo">Programa modificado para realizar a gravação de um video 3D para anaglifo: <a href="download/movie3d.py">movie3d.py</a></p>
+        <p class="resumo">Video gravado:</p>
+		<div class="video-container">
+            <video id="meuVideo" controls>
+                <source src="video/video3d_resultado_lab_v1.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+        <p class="resumo">Download do video (caso não esteja rodando): <a href="video/video3d_resultado_lab_v1.mp4">video3d_resultado_lab_v1.mp4</a>. Caso não funcione mesmo assim, pode ser localizado na pasta do código fonte desse laboratório.</p>
+        <p class="resumo"></p>
+
+        <p class="resumo">Responda: a percepção individual de todos integrantes da equipe. Compare e
+        analise as diferenças com os resultados ao vivo e gravado.</p>
+        <p class="resumo">Não foram percebidas diferenças significativas nos vídeos formados, ambos não apresentaram o comportamente esperado adequadamente, possivelmente devido a problemas na etapa de calibração.</p>
+
+        <h3>Conclusões</h3>
+        <p class="resumo">O experimento permitiu a compreensão prática dos conceitos de estereoscopia e geometria epipolar, fundamentais para sistemas de visão computacional 3D. A montagem de uma câmera estéreo com duas webcams, associada à calibração precisa por meio de padrões de tabuleiro e uso da biblioteca OpenCV, demonstrou a importância da obtenção correta dos parâmetros intrínsecos e extrínsecos para a reconstrução da profundidade de uma cena.</p>
+        <p class="resumo">A geração e visualização de imagens 3D, tanto ao vivo quanto em vídeo gravado, possibilitou aos integrantes da equipe uma percepção concreta da aplicação dos modelos teóricos estudados. Observou-se que pequenas imprecisões no alinhamento das câmeras ou na captura das imagens de calibração afetam diretamente a qualidade da visualização 3D, o que reforça a necessidade de rigor nos procedimentos experimentais.</p>
+        <p class="resumo">Além disso, a comparação entre as imagens geradas ao vivo e os vídeos anáglifos mostrou diferenças sutis na percepção de profundidade, destacando os limites da técnica e a sensibilidade da experiência visual individual. O experimento contribuiu para consolidar os conhecimentos sobre visão estéreo e demonstrou a viabilidade de implementar soluções de reconstrução 3D com baixo custo e boa precisão, sendo uma base sólida para estudos mais avançados em Visão Computacional.</p>
+        
+        <h3>Referências consultadas e indicadas</h3>
+        <p class="resumo">Materiais disponibilizados pelo professor.</p>
+        <p><a href="download/lab3.pdf" download="lab3.pdf">Clique aqui para baixar o roteiro do laboratório.</a></p>
+        <p class="resumo"></p>
+
+
+
+    </main>
+
+    <footer>
+        <p>Página confeccionada para a disciplina de Visão Computacional 2025.2</p>
+        <p>Professor: Celso Kurashima</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
