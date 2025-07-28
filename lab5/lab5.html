@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <title>Relatório 3</title>
+</head>
+
+<body>
+    
+    <header>
+        <a href="../index.html"><img class="ufabc" src="../assets/img/ufabc.png" alt="ufabc logo"></a>
+        <h1>Pixel Rangers</h1>
+        <h2>Relatório 5 - Extração de Características</h2>
+
+        <ul>
+            <li>Caio Vilor Brandão</li>
+            <li>Gustavo Henrique Germano Ledandeck</li>
+            <li>Lucas Pereira de Medeiros</li>
+        </ul>
+        <p>Data de realização dos experimentos: 21 de julho de 2025</p>
+        <p>Data de publicação do relatório: 28 de julho de 2025</p>
+        
+    </header>
+
+    <main>
+        <h3>Introdução</h3>
+        <p class="resumo">A detecção e a extração de características (features) são processos essenciais na Visão Computacional, com aplicações em reconhecimento de objetos, rastreamento, reconstrução 3D e robótica. Features correspondem a pontos de interesse em uma imagem que representam informações relevantes de forma robusta. Neste trabalho, foram estudados diversos algoritmos de detecção e descrição de características, com base na documentação oficial da biblioteca OpenCV.</p>
+        <p class="resumo">Inicialmente, foi realizado um estudo aprofundado sobre o significado de features, que correspondem a pontos de interesse relevantes em uma imagem, capazes de representar suas informações mais significativas de forma compacta e robusta. Foram analisados diferentes detectores clássicos como o Harris e o Shi-Tomasi, os quais identificam cantos com base em mudanças de intensidade local, além do algoritmo SIFT (Scale-Invariant Feature Transform), que oferece robustez a variações de escala, rotação e iluminação, sendo amplamente utilizado em aplicações reais.</p>
+        <p class="resumo">A partir dessa fundamentação teórica, foram desenvolvidos experimentos práticos divididos em três partes principais. A primeira envolveu a implementação de um sistema de correspondência de características baseado em SIFT e homografia, para identificar objetos em diferentes imagens e posteriormente em vídeos capturados por uma câmera estereoscópica calibrada. A segunda parte focou na Transformada de Hough, técnica eficaz para a detecção de linhas e círculos em imagens, com experimentações tanto em imagens estáticas quanto em vídeos em tempo real.</p>
+        <p class="resumo">Por fim, este trabalho também contempla uma análise sobre possíveis aplicações dessas técnicas no contexto do projeto T1, destacando como a detecção de features pode contribuir para soluções robustas e eficientes em cenários do mundo real.</p>
+
+        <h3>Procedimentos experimentais</h3>
+        <h3>Parte 1</h3>
+        <p class="resumo">Na Parte 1, realizou-se o estudo teórico aprofundado sobre os principais métodos de detecção e descrição de características, conforme os tutoriais oficiais da OpenCV. Essa etapa não envolveu programação, mas forneceu o embasamento necessário para a compreensão das atividades seguintes.</p>
+        
+        <h3>Parte 2</h3>
+        <p class="resumo">Na Parte 2, foi implementado um programa utilizando OpenCV para realizar correspondência de características com base no algoritmo SIFT, aplicando homografia para encontrar objetos em duas imagens contendo o mesmo elemento em posições distintas. Posteriormente, esse código foi adaptado para capturar imagens em tempo real a partir de duas webcams de uma câmera estereoscópica previamente calibrada.</p>
+        <p class="resumo">Programa Feature Matching + Homography to find Objects:</p>
+        <p><a href="download/" download="">Clique aqui para baixar o programa.</a></p>
+            <div class="gallery">
+                <img src="img/homography.png" class="perfil" onclick="expandImage(this)">
+            </div>
+
+        <p class="resumo">Programa para leitura de duas webcams da camera estereoscópica calibrada:</p>
+        <p><a href="download/" download="">Clique aqui para baixar o programa.</a></p>
+
+
+        <h3>Parte 3</h3>
+        <p class="resumo">Na Parte 3, foi desenvolvido um programa baseado na Transformada de Hough para detecção de linhas e círculos em imagens previamente gravadas. Esse algoritmo foi, então, adaptado para operar com entradas em vídeo ao vivo provenientes da câmera estereoscópica, exibindo os elementos geométricos detectados em tempo real.</p>
+        <p class="resumo">Programa Hough Transform:</p>
+        <p><a href="download/" download="">Clique aqui para baixar o programa.</a></p>
+            <div class="gallery">
+                <img src="img/homography.png" class="perfil" onclick="expandImage(this)">
+            </div>
+
+        <p class="resumo">Programa para leitura de duas webcams da camera estereoscópica calibrada:</p>
+        <p><a href="download/" download="">Clique aqui para baixar o programa.</a></p>
+
+        <p class="resumo">Por fim, foi realizada uma pesquisa complementar sobre aplicações práticas de técnicas de detecção de características, com o objetivo de analisar como elas podem ser utilizadas no desenvolvimento do trabalho T1.</p>
+
+
+        <div id="popup" class="popup">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <img class="popup-content" id="expandedImage">
+            <div id="caption"></div>
+        </div>
+
+
+
+        <h3>Análise e discussão dos estudos realizados</h3>
+        <h3>Parte 2</h3>
+        <p class="resumo">Programa Feature Matching + Homography to find Objects:</p>
+        <div class="gallery">
+                <img src="img/homography.png" class="perfil" onclick="expandImage(this)">
+        </div>
+        <p class="resumo">Programa para leitura de duas webcams da camera estereoscópica calibrada:</p>
+
+        <h3>Parte 3</h3>
+        <p class="resumo">Programa Hough Transform:</p>
+        <div class="gallery">
+                <img src="" class="perfil" onclick="expandImage(this)">
+        </div>
+        <p class="resumo">Programa para leitura de duas webcams da camera estereoscópica calibrada:</p>
+
+        <h3>Aplicação para o projeto do grupo</h3>
+        <p class="resumo">As técnicas de detecção de features podem ser aplicadas no nosso projeto de separação de lixos hospitalares visando a categorização por nível de perigo. Cada tipo de resíduo hospitalar, como seringas, frascos de medicamentos, luvas, gaze, entre outros, apresenta um conjunto distinto de características visuais (contornos, texturas, cores e formas) que podem ser detectadas por algoritmos como SIFT, ORB ou Shi-Tomasi. Esses algoritmos permitem extrair pontos de interesse robustos em imagens capturadas por câmeras, possibilitando a identificação precisa dos objetos mesmo sob diferentes condições de iluminação, escala ou orientação.</p>
+        <p class="resumo">Uma vez identificadas as features de cada tipo de resíduo, será possível compará-las com um banco de dados previamente rotulado para determinar a classe do objeto observado. Por exemplo, uma seringa descartável pode ser reconhecida pela combinação de seu formato alongado com a presença de uma agulha metálica, enquanto uma luva de látex apresenta contornos mais suaves e deformáveis. Após essa classificação visual baseada em features, pode-se associar cada categoria a um nível de risco (baixo, médio ou alto), de acordo com protocolos sanitários e regulamentos hospitalares.</p>
+
+        <h3>Conclusões</h3>
+        <p class="resumo">Conclui-se que as técnicas de detecção de features, como SIFT, ORB, Harris e Shi-Tomasi, são ferramentas eficazes na identificação de padrões visuais em imagens, permitindo a análise e categorização de objetos com alta precisão. No contexto do projeto de detecção de lixos hospitalares, essas técnicas podem ser aplicadas para reconhecer automaticamente diferentes tipos de resíduos, associando-os a níveis de risco e acionando mecanismos de separação automatizada por servomotores. A integração dessas abordagens com sistemas de visão computacional oferece uma solução inteligente, segura e eficiente para o gerenciamento de resíduos hospitalares, contribuindo tanto para a automação de processos quanto para a preservação da saúde pública.</p>
+        
+        <h3>Referências consultadas e indicadas</h3>
+        <p class="resumo">Materiais disponibilizados pelo professor.</p>
+        <p><a href="download/lab5.pdf" download="lab5.pdf">Clique aqui para baixar o roteiro do laboratório.</a></p>
+        <p class="resumo"></p>
+
+
+
+    </main>
+
+    <footer>
+        <p>Página confeccionada para a disciplina de Visão Computacional 2025.2</p>
+        <p>Professor: Celso Kurashima</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
