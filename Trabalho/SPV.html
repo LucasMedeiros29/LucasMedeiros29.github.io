@@ -23,90 +23,35 @@
     </header>
 
     <main>
-        <h3>Objetivo Geral do Sistema</h3>
-		<p class="resumo">Desenvolver um sistema automatizado baseado em câmeras e técnicas de visão computacional para identificar, 
-            classificar e acionar mecanismos de separação de resíduos hospitalares de risco biológico, como seringas, luvas, máscaras, gazes e outros.</p>
-        
-        <h3>Diagrama de blocos</h3>
-        <div class="gallery">
-            <img src="img/diagrama.png" class="perfil" onclick="expandImage(this)">
-        </div>
-        <div id="popup" class="popup">
+	<div id="popup" class="popup">
             <span class="close" onclick="closePopup()">&times;</span>
             <img class="popup-content" id="expandedImage">
             <div id="caption"></div>
         </div>
+        <h3>Objetivo Geral do Sistema</h3>
+	<p class="resumo">Desenvolver um sistema automatizado baseado em câmeras e técnicas de visão computacional para identificar, 
+            classificar e acionar mecanismos de separação de resíduos hospitalares de risco biológico, como seringas, luvas, máscaras, gazes e outros.</p>
+        <p class="resumo">Para fins de simplificação e por questões de otimização, serão categorizados apenas quatro objetos, sendo um de cada tipo de classificação de lixo hospitalar.</p>
 
-    	<h3>Descrição dos Blocos</h3>
-
-        <h3>Bloco: Câmera (Captura de Imagem ou Vídeo)</h3>
-        <ul>
-            <li>Entrada: Ambiente com resíduos hospitalares.</li>
-            <li>Processamento: Captura contínua de imagens (frame por frame).</li>
-            <li>Saída: Matriz de pixels (imagem RGB ou grayscale).</li>
-        </ul>
-
-        <h3>Bloco: Pré-processamento de Imagem (OpenCV)</h3>
-        <ul>
-            <li>Entrada: Imagem bruta da câmera.</li>
-                <li>-> Redimensionamento da imagem.</li>
-                <li>-> Normalização dos pixels.</li>
-                <li>-> Conversão de cor (BGR → RGB ou HSV).</li>
-                <li>-> Remoção de ruído (filtros).</li>
-            <li>Saída: Imagem tratada para análise pelo modelo.</li>
-        </ul>
-
-        <h3>Bloco: Modelo de Detecção de Objetos (CNN - YOLOv5 ou YOLOv8)</h3>
-        <ul>
-            <li>Entrada: Imagem pré-processada.</li>
-            <li>-> Detecção de objetos presentes.</li>
-            <li>-> Classificação entre tipos (seringa, luva, máscara, etc.).</li>
-            <li>-> Retorno de bounding boxes e rótulos.</li>
-            <li>Saída: Lista de objetos detectados com classes, posições e confiabilidade.</li>
-        </ul>
-
-        <h3>Bloco: Classificação do Objeto e Ação</h3>
-        <ul>
-            <li>Entrada: Lista de objetos detectados.</li>
-            <li>-> Verifica o tipo de lixo.</li>
-            <li>-> Associa tipo de risco e destino.</li>
-            <li>-> Se necessário, dispara alarme para lixo inadequado.</li>
-            <li>Saída: Comando lógico de ação (ex: mover servomotor) e registro para relatório.</li>
-        </ul>
-
-        <h3>Bloco: Acionamento do Servomotor / Registro</h3>
-        <ul>
-            <li>Entrada: Comando lógico de destino.</li>
-            <li>-> Move o material para compartimento correto.</li>
-            <li>-> Gera log de descarte e armazena para análise posterior.</li>
-            <li>Saída: Ação física e armazenamento de dados.</li>
-        </ul>
-
-        <h3>Fluxograma Simplificado do Sistema</h3>
-        <div class="gallery">
-            <img src="img/fluxograma.png" class="perfil" onclick="expandImage(this)">
-        </div>
-
-        <h3>Tipos de Lixo e Classes no Sistema</h3>
-        <ul>
-            <li>Classe 0: Lixo não identificado.</li>
-            <li>Classe 1: Seringas/agulhas.</li>
-            <li>Classe 2: Luvas contaminadas.</li>
-            <li>Classe 3: Máscaras.</li>
-            <li>Classe 4: Gaze/curativos.</li>
-            <li>Classe 5: Frascos com fluidos.</li>
-        </ul>
-
-        <h3>Técnicas e Ferramentas Usadas</h3>
+        <h3>Técnicas e Ferramentas Utilizadas para o Código</h3>
         <ul>
             <li>OpenCV: Captura, manipulação e visualização das imagens.</li>
-            <li>YOLOv5/YOLOv8: Detecção e classificação de objetos em tempo real.</li>
             <li>Python + PyTorch: Treinamento e integração do modelo.</li>
-            <li>Servo Motor (PWM com GPIO ou Arduino): Movimento de separação física dos resíduos.</li>
-            <li>Interface opcional (GUI ou Web): Para visualização e controle.</li>
         </ul>
-        
 
+	<h3>Desafios Encontrados</h3>
+	<p class="resumo">Como mencionado, o primeiro desafio encontrado foi o treinamento para identificação dos objetos. Foi tentado utilizar um banco de dados com diversas fotos, resultando em extrema lentidão para conclusão do treinamento e, consequentemente, tornando inviável por hora. Desse modo, o código inicial foi restrito à quatro objetos, um de cada categoria.</p>
+
+	<h3>Estado da Arte</h3>
+	<p><a href="download/" download="">Clique aqui para baixar o programa.</a></p>
+	<div class="gallery">
+        	<img src="img/" class="perfil" onclick="expandImage(this)">
+        </div>
+
+	<h3>Resultados Obtidos</h3>
+
+	<h3>Conclusão</h3>
+	    
     </main>
 
     <footer>
