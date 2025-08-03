@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <title>Relatório 4</title>
+</head>
+
+<body>
+    
+    <header>
+        <a href="../index.html"><img class="ufabc" src="../assets/img/ufabc.png" alt="ufabc logo"></a>
+        <h1>Pixel Rangers</h1>
+        <h2>Relatório 4 - Mapa de Profundidade</h2>
+
+        <ul>
+            <li>Caio Vilor Brandão</li>
+            <li>Gustavo Henrique Germano Ledandeck</li>
+            <li>Lucas Pereira de Medeiros</li>
+        </ul>
+        <p>Data de realização dos experimentos: 30 de julho de 2025</p>
+        <p>Data de publicação do relatório: 04 de julho de 2025</p>
+        
+    </header>
+
+    <main>
+        <h3>Introdução</h3>
+        <p class="resumo">A visão estéreo é uma técnica fundamental para estimativa de profundidade, permitindo que sistemas artificiais obtenham informações tridimensionais a partir de pares de imagens. Esse processo baseia-se na geometria epipolar, que descreve as relações geométricas entre dois pontos de vista distintos, e na geração de mapas de disparidade, os quais indicam a diferença de posição de um mesmo ponto em duas imagens capturadas por câmeras ligeiramente deslocadas.</p>
+        <p class="resumo">A partir dessa disparidade, é possível derivar o mapa de profundidade, que fornece a distância dos objetos em relação ao sistema de captura. Aplicações desse método abrangem desde sistemas de navegação autônoma até medições industriais e robótica. No presente experimento, foi utilizada uma câmera estéreo construída previamente, com o objetivo de compreender e aplicar conceitos como retificação de imagens, mapeamento de disparidade e conversão para mapa de profundidade, de modo a realizar medições reais de distância de objetos.</p>
+        <p class="resumo">O estudo teórico foi fundamentado em materiais sobre geometria epipolar, calibração estéreo e algoritmos de correspondência densa, permitindo compreender não apenas a formulação matemática, mas também a implementação prática utilizando a biblioteca OpenCV.</p>
+
+        <h3>Procedimentos experimentais</h3>
+        <h3>Parte 1</h3>
+        <p class="resumo">Inicialmente, realizou-se um estudo teórico aprofundado sobre estereoscopia, parâmetros conjuntos de duas câmeras e formação de mapas de disparidade e profundidade. Foram consultadas as referências <a href="https://learnopencv.com/introduction-to-epipolar-geometry-and-stereo-vision/">https://learnopencv.com/introduction-to-epipolar-geometry-and-stereo-vision/</a>, <a href="https://docs.opencv.org/4.x/dd/d53/tutorial_py_depthmap.html">https://docs.opencv.org/4.x/dd/d53/tutorial_py_depthmap.html</a> e 
+            <a href="https://learnopencv.com/depth-perception-using-stereo-camera-python-c/">https://learnopencv.com/depth-perception-using-stereo-camera-python-c/</a> para compreender a geometria epipolar, o processo de retificação e a estimativa de profundidade a partir de pares de imagens estéreo.</p>
+        
+        <h3>Parte 2</h3>
+        <p class="resumo">Foi utilizada a câmera estéreo construída na aula anterior para a etapa prática. Primeiramente, executou-se a calibração estéreo conforme o procedimento “Step 2: Performing stereo calibration with fixed intrinsic parameters” descrito em <a href="https://learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/">https://learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/</a>, utilizando scripts de captura (“capture_images.py”) e de cálculo dos parâmetros de calibração (“calibrate.py”). O resultado foi armazenado no arquivo params_py.xml, contendo os parâmetros intrínsecos e extrínsecos das câmeras. Na etapa seguinte, aplicou-se o algoritmo Block Matching, conforme descrito em <a href="https://learnopencv.com/depth-perception-using-stereo-camera-python-c/">https://learnopencv.com/depth-perception-using-stereo-camera-python-c/</a>, por meio do programa disparity_params_gui.py, modificado para ler params_py.xml. O mapa de disparidade gerado foi salvo em depth_estmation_params_py.xml.</p>
+        <p class="resumo">Com base nesse resultado, obteve-se o mapa de profundidade utilizando o script disparity2depth_calib.py, adaptado para ler tanto os parâmetros de calibração quanto o arquivo de disparidade. Por fim, foram realizadas medições de distância com o script obstacle_avoidance.py, também adaptado para ler os arquivos gerados. Foram utilizados três objetos distintos, cujas distâncias reais foram medidas com réguas para comparação. As distâncias calculadas a partir do mapa de profundidade foram registradas em tabela, juntamente com o erro percentual e análise da influência dos parâmetros do algoritmo de correspondência. Todo o procedimento foi documentado com imagens e vídeos para permitir sua reprodução.</p>
+
+
+        <div id="popup" class="popup">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <img class="popup-content" id="expandedImage">
+            <div id="caption"></div>
+        </div>
+
+
+
+        <h3>Análise e discussão dos estudos realizados</h3>
+        <p class="resumo">Programa “disparity_params_gui.py” adaptado:</p>
+        <p class="resumo">Mapa de disparidade:</p>
+
+        <p class="resumo">Programa “disparity2depth_calib.py” adaptado:</p>
+        <p class="resumo">Mapa de profundidade:</p>
+
+        <p class="resumo">Programa “obstacle_avoidance.py” adaptado:</p>
+        <p class="resumo">Tabela de medidas de distância com 3 objetos:</p>
+
+
+        <h3>Conclusões</h3>
+        <p class="resumo">O experimento permitiu consolidar os conceitos teóricos de visão estéreo, destacando a importância da calibração precisa e da escolha adequada dos parâmetros do algoritmo de correspondência para a obtenção de resultados confiáveis. Observou-se que pequenas variações nesses parâmetros influenciam significativamente o mapa de disparidade e, consequentemente, a estimativa de profundidade.</p>
+        <p class="resumo">A comparação entre as distâncias medidas pelo sistema e as distâncias reais evidenciou que, embora existam erros inerentes ao processo, é possível alcançar boa precisão para aplicações práticas, desde que o sistema esteja bem calibrado e os objetos se encontrem dentro de uma faixa adequada de distância e iluminação. A atividade reforçou a relação direta entre a teoria estudada e a prática experimental, permitindo compreender como conceitos como geometria epipolar, retificação e disparidade se integram para fornecer estimativas de profundidade a partir de pares de imagens.</p>
+        
+        <h3>Referências consultadas e indicadas</h3>
+        <p class="resumo">Materiais disponibilizados pelo professor.</p>
+        <p><a href="download/lab4.pdf" download="lab4.pdf">Clique aqui para baixar o roteiro do laboratório.</a></p>
+        <p class="resumo"></p>
+
+
+
+    </main>
+
+    <footer>
+        <p>Página confeccionada para a disciplina de Visão Computacional 2025.2</p>
+        <p>Professor: Celso Kurashima</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
