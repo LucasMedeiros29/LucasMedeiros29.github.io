@@ -81,16 +81,50 @@
         <h3>Parte 2</h3>
         <p class="resumo">Programa Feature Matching + Homography to find Objects:</p>
         <div class="gallery">
-                <img src="img/" class="perfil" onclick="expandImage(this)">
+                <img src="img/Img_resultado_SIFT_tutorial.jpg" class="perfil" onclick="expandImage(this)">
         </div>
         <p class="resumo">Programa para leitura de duas webcams da camera estereoscópica calibrada:</p>
+        <div class="video-container">
+            <video id="meuVideo" controls>
+                <source src="video/" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
 
         <h3>Parte 3</h3>
         <p class="resumo">Programa Hough Transform:</p>
         <div class="gallery">
                 <img src="" class="perfil" onclick="expandImage(this)">
         </div>
-        <p class="resumo">Programa para leitura de duas webcams da camera estereoscópica calibrada:</p>
+        
+        <p class="resumo">Programa para leitura de duas webcams da camera estereoscópica calibrada (detecção de linhas):</p>
+        <div class="video-container">
+            <video id="meuVideo" controls>
+                <source src="video/output_left.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+        <div class="video-container">
+            <video id="meuVideo" controls>
+                <source src="video/output_right.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+
+        <p class="resumo">Programa para leitura de duas webcams da camera estereoscópica calibrada (detecção de círculos):</p>
+        <div class="video-container">
+            <video id="meuVideo" controls>
+                <source src="video/output_left_circles.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+        <div class="video-container">
+            <video id="meuVideo" controls>
+                <source src="video/output_right_circles.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+    <p class="resumo">Diferente da detecção por linhas, a detecção por círculos se mostrou um pouco mais difícil de se analisar devido a baixa quantidade de objetos circulares para detecção, embora estivesse funcionando de modo relativamente adequado.</p>
 
         <h3>Aplicação para o projeto do grupo</h3>
         <p class="resumo">As técnicas de detecção de features podem ser aplicadas no nosso projeto de separação de lixos hospitalares visando a categorização por nível de perigo. Cada tipo de resíduo hospitalar, como seringas, frascos de medicamentos, luvas, gaze, entre outros, apresenta um conjunto distinto de características visuais (contornos, texturas, cores e formas) que podem ser detectadas por algoritmos como SIFT, ORB ou Shi-Tomasi. Esses algoritmos permitem extrair pontos de interesse robustos em imagens capturadas por câmeras, possibilitando a identificação precisa dos objetos mesmo sob diferentes condições de iluminação, escala ou orientação.</p>
@@ -116,4 +150,5 @@
 </body>
 
 </html>
+
 
