@@ -35,22 +35,43 @@
 
         <h3>Técnicas e Ferramentas Utilizadas para o Código</h3>
         <ul>
-            <li>OpenCV: Captura, manipulação e visualização das imagens.</li>
-            <li>Python + PyTorch: Treinamento e integração do modelo.</li>
+            <li>OpenCV – Captura de vídeo da webcam, manipulação de imagens, detecção de contornos, desenho de caixas e texto na tela.</li>
+            <li>Python 3 – Linguagem principal utilizada.</li>
+	    <li>PyTorch – Criação, modificação e execução da rede neural (ResNet18).</li>
+	    <li>Albumentations – Redimensionamento, normalização e conversão de imagens para tensor PyTorch antes da classificação.</li>
+	    <li>NumPy – Operações numéricas e manipulação de arrays.</li>
+	    <li>Pickle – Carregamento e salvamento de objetos Python.</li>
         </ul>
 
 	<h3>Desafios Encontrados</h3>
-	<p class="resumo">Como mencionado, o primeiro desafio encontrado foi o treinamento para identificação dos objetos. Foi tentado utilizar um banco de dados com diversas fotos, resultando em extrema lentidão para conclusão do treinamento e, consequentemente, tornando inviável por hora. Desse modo, o código inicial foi restrito à quatro objetos, um de cada categoria.</p>
+	<p class="resumo">Como mencionado, o primeiro desafio encontrado foi o treinamento para identificação dos objetos. Foi tentado utilizar um 
+		banco de dados com diversas fotos, resultando em extrema lentidão para conclusão do treinamento e, consequentemente, tornando inviável por hora. 
+		Desse modo, o código inicial foi restrito à quatro objetos, um de cada categoria.</p>
 
+	<h3>Funcionamento</h3>
+        <ul>
+            <li>Inicialmente, é utilizado o código "auto_calibrate.py" para realizar a calibração da câmera com base , gerando o arquivo final calib.npz;</li>
+	    <li>Em seguida, é utilizado o código "record_class" para tirar fotos dos objetos desejados;</li>
+	    <li>O código "prepare_dataset" é então utilizado para separar e tratar as imagens, diminuindo seus tamanhos e deixando-as mais leves;</li>
+	    <li>O código "train" realiza o treinamento com base nas imagens processadas, gerando arquivos com os dados necessários (pasta models);</li>
+	    <li>Por fim, o algoritmo "inference" realiza a classificação em tempo real dos objetos com base nos dados gerados pelo código anterior, exibindo na tela o grau de precisão da medição e a classificação do objeto.</li>
+        </ul>
+	
 	<h3>Estado da Arte</h3>
-	<p><a href="download/" download="">Clique aqui para baixar o programa.</a></p>
+	<p><a href="download/auto_calibrate.py" download="auto_calibrate.py">Calibração</a></p>
+	<p><a href="download/record_class.py" download="record_class.py">Captura</a></p>
+	<p><a href="download/prepare_dataset.py" download="prepare_dataset.py">Preparação do Dataset</a></p>
+	<p><a href="download/train.py" download="train.py">Treinamento</a></p>
+	<p><a href="download/inference.py" download="inference.py">Classificação</a></p>
+	    
+	<h3>Resultados Obtidos</h3>
 	<div class="gallery">
         	<img src="img/" class="perfil" onclick="expandImage(this)">
         </div>
-
-	<h3>Resultados Obtidos</h3>
-
+	    
 	<h3>Conclusão</h3>
+	<p class="resumo">Ao final, os programas estão executando satisfatóriamente o que é proposto, embora melhorias possam ser aplicadas para torná-los mais otimizados e permitir a aplicação em mais objetos. 
+	Além disso, também é necessário realizar a implementação da etapa "o que ocorre após a classificação", que está definido, até o momento, como o acionamento do servomotor para manipulação dos objetos.</p>
 	    
     </main>
 
@@ -62,4 +83,5 @@
 </body>
 
 </html>
+
 
