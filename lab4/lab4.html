@@ -42,7 +42,7 @@
         
         <h3>Parte 2</h3>
         <p class="resumo">Foi utilizada a câmera estéreo construída na aula anterior para a etapa prática. Primeiramente, executou-se a calibração estéreo conforme o procedimento “Step 2: Performing stereo calibration with fixed intrinsic parameters” descrito em <a href="https://learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/">https://learnopencv.com/making-a-low-cost-stereo-camera-using-opencv/</a>, utilizando scripts de captura (“capture_images.py”) e de cálculo dos parâmetros de calibração (“calibrate.py”). O resultado foi armazenado no arquivo params_py.xml, contendo os parâmetros intrínsecos e extrínsecos das câmeras. Na etapa seguinte, aplicou-se o algoritmo Block Matching, conforme descrito em <a href="https://learnopencv.com/depth-perception-using-stereo-camera-python-c/">https://learnopencv.com/depth-perception-using-stereo-camera-python-c/</a>, por meio do programa disparity_params_gui.py, modificado para ler params_py.xml. O mapa de disparidade gerado foi salvo em depth_estmation_params_py.xml.</p>
-        <p class="resumo">Com base nesse resultado, obteve-se o mapa de profundidade utilizando o script disparity2depth_calib.py, adaptado para ler tanto os parâmetros de calibração quanto o arquivo de disparidade. Por fim, foram realizadas medições de distância com o script obstacle_avoidance.py, também adaptado para ler os arquivos gerados. Foram utilizados três objetos distintos, cujas distâncias reais foram medidas com réguas para comparação. As distâncias calculadas a partir do mapa de profundidade foram registradas em tabela, juntamente com o erro percentual e análise da influência dos parâmetros do algoritmo de correspondência. Todo o procedimento foi documentado com imagens e vídeos para permitir sua reprodução.</p>
+        <p class="resumo">Com base nesse resultado, obteve-se o mapa de profundidade utilizando o script disparity2depth_calib.py, adaptado para ler tanto os parâmetros de calibração quanto o arquivo de disparidade. Por fim, foram realizadas medições de distância com o script obstacle_avoidance.py, também adaptado para ler os arquivos gerados. Foram utilizados três objetos distintos (um celular, um tabuleiro e a cabeça de um dos integrantes), cujas distâncias reais foram medidas com uma trena para comparação. As distâncias calculadas a partir do mapa de profundidade foram registradas em tabela, juntamente com a análise da influência dos parâmetros do algoritmo de correspondência.</p>
         
         <p><a href="download/capture_images_neww.py" download="feature_homography.py">Clique aqui para baixar o programa para captura de imagens.</a></p>
         <p><a href="download/calibrate_new.py" download="feature_homography.py">Clique aqui para baixar o programa para calibração das câmeras.</a></p>
@@ -60,17 +60,19 @@
 
         <h3>Análise e discussão dos estudos realizados</h3>
         <p class="resumo">Programa “disparity_params_gui.py” adaptado:</p>
+        <p class="resumo">**Faltou tirar print da tela**</p>
         <p class="resumo">Mapa de disparidade:</p>
+        <p class="resumo">**Faltou tirar print da tela**</p>
     
-
         <p class="resumo">Programa “disparity2depth_calib.py” adaptado:</p>
+        <p class="resumo">**Faltou tirar print da tela**</p>
         <p class="resumo">Mapa de profundidade:</p>
         <div class="gallery">
             <img src="img/Figure_1.png" class="perfil" onclick="expandImage(this)">
         </div>
 
         <p class="resumo">Programa “obstacle_avoidance.py” adaptado:</p>
-    
+        <p class="resumo">**Faltou tirar print da tela**</p>
         <p class="resumo">Exemplo de saída dos dados de distância:</p>
         <div class="gallery">
             <img src="img/exemplo_saida.png" class="perfil" onclick="expandImage(this)">
@@ -79,7 +81,8 @@
         <div class="gallery">
             <img src="img/tabela.png" class="perfil" onclick="expandImage(this)">
         </div>
-
+        <p class="resumo">A tabela acima representa o objetivo final do experimento. Nela é possível perceber que as distâncias calculadas pelo programa se aproximam bastante dos medidos com a trena. Uma coisa a se destacar é que o funcionamento do programa é consideravelmente não-intuitivo, sendo necessário uma série de tentativas e erros para chegar a valores adequados. 
+        A recomendação, encontrada pelo nosso grupo, é ajustar os parâmetros do programa “disparity2depth_calib.py” até que seja visível apenas até a região imediatamente atrás do último objeto (que no caso do experimento, era a cabeça de um dos participantes). Os parâmetros em si foram ajustados de modo aleatório, até que fosse possível distinguir os objetos com certa clareza, conforme imagens acima.</p>
 
         <h3>Conclusões</h3>
         <p class="resumo">O experimento permitiu consolidar os conceitos teóricos de visão estéreo, destacando a importância da calibração precisa e da escolha adequada dos parâmetros do algoritmo de correspondência para a obtenção de resultados confiáveis. Observou-se que pequenas variações nesses parâmetros influenciam significativamente o mapa de disparidade e, consequentemente, a estimativa de profundidade.</p>
@@ -103,5 +106,6 @@
 
 
 </html>
+
 
 
