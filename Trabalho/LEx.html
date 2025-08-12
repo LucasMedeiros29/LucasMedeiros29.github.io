@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <title>Desenvolvimento do Laboratório Experimental</title>
+</head>
+
+<body>
+    
+    <header>
+        <a href="../index.html"><img class="ufabc" src="../assets/img/ufabc.png" alt="ufabc logo"></a>
+        <h1>Pixel Rangers</h1>
+        <h2>Desenvolvimento do Laboratório Experimental</h2>
+        <p>11 de agosto de 2025</p>
+        
+    </header>
+
+    <main>
+	<div id="popup" class="popup">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <img class="popup-content" id="expandedImage">
+            <div id="caption"></div>
+        </div>
+        <h3>Introdução</h3>
+        <p class="resumo">Nosso projeto, chamado "Categorizador de Resíduo Hospitalar", tem como objetivo detectar e categorizar diferentes tipos de lixo, sejam eles comuns ou hospitalares. 
+            O programa realizará a detecção através de uma câmera e exibirá, em uma janela na tela do computador, a categoria do lixo e o nível de confiabilidade dessa categorização. 
+            As categorias para lixo hospitalar são: Low (menos perigosos), Medium e High (mais perigosos).
+        </p>
+        <p class="resumo">Para fins de simplificação, serão disponibilizados quatro objetos hospitalares para manuseio e teste do sistema. Os objetos deverão ser dispostos em frente à câmera, de modo a serem visíveis na tela do computador.</p>
+        
+        <div class="gallery">
+            <img src="img/montagem.png" class="perfil" onclick="expandImage(this)">
+        </div>
+
+        <h3>Procedimento experimental</h3>
+        <ul>
+            <li>1) Escolha um objeto;</li>
+            <li>2) Posicione ele de frente para a webcam, de modo que o objeto esteja visível na janela do programa;</li>
+            <li>3) Verifique a categoria apresentada na janela;</li>
+            <li>4) Teste com outros objetos, inclusive objetos pessoais.</li>
+        </ul>
+
+        <h3>Questionário</h3>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvp2l1oFds_ngX9KATbFTm4wvxdQ8A5THOU5M73nsbhi0jgQ/viewform"><p class="resumo">Clique aqui para acessar o questionário.</p></a>
+	
+	    
+    </main>
+
+    <footer>
+        <p>Página confeccionada para a disciplina de Visão Computacional 2025.2</p>
+        <p>Professor: Celso Kurashima</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
