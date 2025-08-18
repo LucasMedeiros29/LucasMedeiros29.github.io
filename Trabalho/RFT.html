@@ -34,8 +34,10 @@
         <p class="resumo">A partir da entrevista realizada pelo integrante Caio Vilor Brandão, foi identificada a possibilidade da aplicação do projeto proposto.</p>
         <p class="resumo">Nos hospitais, clínicas e laboratórios, há uma variedade de tipos de lixo — de baixo risco (ex.: luvas não contaminadas) a altamente perigosos (ex.: agulhas com resíduos biológicos). A separação incorreta pode gerar multas, riscos ocupacionais, e ineficiência no tratamento dos resíduos. 
             Pesquisas demonstram que mais de 25% dos acidentes com material biológico em ambientes hospitalares envolvem falhas no descarte (Fonte: Silva et al., 2020, Revista Brasileira de Enfermagem). Além disso, tecnologias com visão computacional já vêm sendo aplicadas para classificação de lixo doméstico com bons resultados (Zhang et al., 2021, Waste Management Journal), o que valida o uso de câmeras e inteligência artificial para categorização visual.</p>
-        <p class="resumo">Objetivos:</p>
+        <p class="resumo">Com isso em mente, foi pensado um sistema que realizasse a classificação automática desses lixos, a fim de proporcionar o descarte correto.</p>
+        <p class="resumo">Objetivos iniciais:</p>
         <ul>
+            <li>Aplicar os conceitos da disciplina (filtragem, transformações geométricas, calibração e intrínsecos/extrínsecos);</li>
             <li>Desenvolver um sistema automatizado em Python com OpenCV que:</li>
             <li>Detecte objetos (resíduos hospitalares) através de uma câmera;</li>
             <li>Classifique o objeto identificado quanto ao tipo (ex.: luvas, seringas, frascos) e ao grau de risco (baixo, moderado, alto);</li>
@@ -52,19 +54,38 @@
         </ul>
 
         <h3>Materiais e métodos</h3>
+        <p class="resumo">O projeto consiste em programas (códigos) em python que utilizam bibliotecas, como o OpenCV, para processamento e tratamento de imagem e vídeo.</p>
+        <p class="resumo">Inicialmente, foi pensado também na utilização de um servomotor para realizar a categorização do lixo e de uma esteira para transportá-lo. Porém, devido ao tempo disponibilizado para 
+            confecão, a parte física do projeto foi reduzido ao uso de uma câmera e uma caixa com um fundo preto onde os objetos seriam posicionados para análise.
+        </p>
+        <p class="resumo">Ou seja, o projeto final consiste nos programas, na caixa para posicionamento dos objetos e de uma câmera para obtenção das imagens em tempo real. 
+            Os objetos são posicionados no fundo da caixa e são analisados pelo programa final através da câmera, onde, no monitor, é exibida uma janela com o objeto, sua classificação e o grau de precisão da análise. 
+            Além do programa principal, há outros programas, como o auto_calibrate, record_class, etc. Todos eles estão especificados abaixo. Para fins de simplificação da apresentação, foram 
+            usados apenas quatro tipos de objetos para a demonstração da detecção.
+        </p>
+ 
         <p class="resumo">Técnicas e Ferramentas Utilizadas para o Código</p>
         <ul>
-            <li>OpenCV – Captura de vídeo da webcam, manipulação de imagens, detecção de contornos, desenho de caixas e texto na tela.</li>
-            <li>Python 3 – Linguagem principal utilizada.</li>
+        <li>OpenCV – Captura de vídeo da webcam, manipulação de imagens, detecção de contornos, desenho de caixas e texto na tela.</li>
+        <li>Python 3 – Linguagem principal utilizada.</li>
 	    <li>PyTorch – Criação, modificação e execução da rede neural (ResNet18).</li>
 	    <li>Albumentations – Redimensionamento, normalização e conversão de imagens para tensor PyTorch antes da classificação.</li>
 	    <li>NumPy – Operações numéricas e manipulação de arrays.</li>
 	    <li>Pickle – Carregamento e salvamento de objetos Python.</li>
         </ul>
 
+        <p class="resumo">Lista dos Programas:</p>
+            <ul>
+            <li>train_new.py</li>
+            <li>record_class.py</li>
+            <li>prepare_dataset_new.py</li>
+            <li>inference_new.py</li>
+            <li>auto_calibrate.py</li>
+            </ul>
+        
         <p class="resumo">Funcionamento</p>
         <ul>
-            <li>Inicialmente, é utilizado o código "auto_calibrate.py" para realizar a calibração da câmera com base , gerando o arquivo final calib.npz;</li>
+        <li>Inicialmente, é utilizado o código "auto_calibrate.py" para realizar a calibração da câmera com base , gerando o arquivo final calib.npz;</li>
 	    <li>Em seguida, é utilizado o código "record_class" para tirar fotos dos objetos desejados;</li>
 	    <li>O código "prepare_dataset" é então utilizado para separar e tratar as imagens, diminuindo seus tamanhos e deixando-as mais leves;</li>
 	    <li>O código "train" realiza o treinamento com base nas imagens processadas, gerando arquivos com os dados necessários (pasta models);</li>
@@ -73,15 +94,14 @@
 
         <p class="resumo">Tipos de Lixo e Classes no Sistema</p>
         <ul>
-            <li>Classe 0: Lixo não identificado.</li>
-            <li>Classe 1: Seringas/agulhas.</li>
-            <li>Classe 2: Luvas contaminadas.</li>
-            <li>Classe 3: Máscaras.</li>
-            <li>Classe 4: Gaze/curativos.</li>
-            <li>Classe 5: Frascos com fluidos.</li>
+            <li>Normal: Lixo não identificado (celular e anel).</li>
+            <li>Low: Nível baixo de perigo (gazes e luvas).</li>
+            <li>Medium: Nível mediano de perigo (seringas).</li>
+            <li>High: Alto nível de perigo (agulhas).</li>
+
         </ul>
 
-        <p class="resumo">Diagrama de blocos</p>
+        <p class="resumo">Diagrama de Blocos</p>
         <div class="gallery">
             <img src="img/diagrama.png" class="perfil" onclick="expandImage(this)">
         </div>
@@ -92,32 +112,72 @@
         </div>
 
 
-        <p class="resumo">lista dos arquivos:</p>
+        <p class="resumo">Lista dos componentes gerais:</p>
         <ul>
-            <li>Programas:</li>
-            <li>train_new.py</li>
-            <li>record_class.py</li>
-            <li>prepare_dataset_new.py</li>
-            <li>inference_new.py</li>
-            <li>capture_calibration.py</li>
-            <li>auto_calibrate.py</li>
-            <li>Fotos para treinamento (pasta data->raw)</li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-
+            <li>Fotos para treinamento (pasta data->raw);</li>
+            <li>Câmera;</li>
+            <li>Computador com Ubuntu;</li>
+            <li>Bibliotecas de códigos (litadas em cada arquivo de programa);</li>
+            <li>Caixa (cenário de análise).</li>
         </ul>
+        <div class="gallery">
+            <img src="img/projeto.png" class="perfil" onclick="expandImage(this)">
+        </div>
+
+        <p class="resumo">Grau de atendimento do sistema desenvolvido em relação ao contexto/cenário escolhido:</p>
+        <p class="resumo">Como mencionado, para fins de simplificação e por questão de tempo, a parte do acionamento do servomotor e da esteira não foram 
+            elaborados, ficando em foco a parte principal da análise pelo programa.
+        </p>
+        <p class="resumo">Conforme o vídeo abaixo, o programa conseguiu detectar de modo satisfatório todos os objetos propostos, embora apresente um pouco de dificuldade 
+            a depender de fatores como iluminação, posição do objeto e modo como ele é disposto.
+        </p>
+
+        <div class="video-container">
+        <video id="meuVideo" controls>
+            <source src="video/teste.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        </div>
+        <p class="resumo">Entretanto, mesmo com as dificuldades, o teste pelos usuários se mostrou satisfatório, conforme seção a seguir.</p>
+
 
         <h3>Laboratorio Experimental</h3>
+        <p class="resumo">Os usuários foram apresentados ao projeto conforme seção <a href="LEx.html">LEx</a>, com preenchimento de um formulário 
+        ao final do teste.</p>
+        <p class="resumo">O Procedimento experimental foi:</p>
+        <ul>
+            <li>1) Escolha um objeto;</li>
+            <li>2) Posicione ele de frente para a webcam, de modo que o objeto esteja visível na janela do programa;</li>
+            <li>3) Verifique a categoria apresentada na janela;</li>
+            <li>4) Teste com outros objetos, inclusive objetos pessoais.</li>
+        </ul>
+        <p class="resumo">Os resultados do formulário foram extraídos para uma planilha com as notas de cada usuário 
+        e os comentários e sugestões estão informados na seção abaixo.
+        </p>
+        <p class="resumo">A planilha com as notas pode ser baixada <a href="CV2025_N_notas_Equipe_PixelRangers.xlsx" download="CV2025_N_notas_Equipe_PixelRangers.xlsx">aqui</a>.</p>
+        <p class="resumo">A partir das notas, que se encontraram entre 8.0 e 10.0, é possível notar que o programa atendeu satisfatóriamente o que foi proposto, embora melhorias sempre são consideradas. 
+        Entre as sugestões dos usuários, encontra-se "incluir uma caixa para limitar a luminosidade", dado que a estrutura do projeto não estava concluída até o momento, a caixa foi adicionada posteriormente.
+        </p>
 
         <h3>Conclusões</h3>
-	
-	    <h3>Referências Bibliográficas</h3>
+        
 
-        <h3>Anexo</h3>
+	    <h3>Referências Bibliográficas</h3>
+        <p class="resumo">[1] Agência Nacional de Vigilância Sanitária (ANVISA). https://www.gov.br/anvisa/pt-br/assuntos/medicamentos/registro-sanitario/legislacao/residuos-de-servicos-de-saude</p>
+        <p class="resumo">[2] Ministério do Meio Ambiente (Brasil) – Gestão de resíduos sólidos. https://www.gov.br/mma/pt-br/assuntos/gestao-e-educacao-ambiental/gestao-integrada-de-residuos-solidos</p>
+        <p class="resumo">[3] World Health Organization (WHO) – Management of waste from healthcare activities. https://www.who.int/publications/i/item/9789241548564  </p>
+        <p class="resumo">[4] Waste Management Journal (Springer) – Artigos sobre classificação de lixo usando visão computacional e IA. https://www.journals.elsevier.com/waste-management  </p>
+        <p class="resumo">[5] OpenCV (Documentação oficial) – Biblioteca para processamento de imagens e vídeo. https://docs.opencv.org/</p>
+        <p class="resumo">[6] PyTorch (Documentação oficial) – Framework de aprendizado de máquina e redes neurais. https://pytorch.org/docs/stable/index.html</p>
+        <p class="resumo">[7] Albumentations (GitHub) – Biblioteca para aumento de dados em visão computacional. https://github.com/albumentations-team/albumentations</p>
+        <p class="resumo">[8] Materiais disponibilizados pelo docente da disciplina.</p>
+
+        <h3>Anexos</h3>
+	        <p class="resumo"><a href="download/auto_calibrate.py" download="auto_calibrate.py">Calibração</a></p>
+	        <p class="resumo"><a href="download/record_class.py" download="record_class.py">Captura</a></p>
+	        <p class="resumo"><a href="download/prepare_dataset.py" download="prepare_dataset.py">Preparação do Dataset</a></p>
+	        <p class="resumo"><a href="download/train.py" download="train.py">Treinamento</a></p>
+	        <p class="resumo"><a href="download/inference.py" download="inference.py">Classificação</a></p>
 
     </main>
 
