@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <title>Teste de Campo</title>
+</head>
+
+<body>
+    
+    <header>
+        <a href="../index.html"><img class="ufabc" src="../assets/img/ufabc.png" alt="ufabc logo"></a>
+        <h1>Pixel Rangers</h1>
+        <h2>Teste de Campo</h2>
+        <p>17 de Agosto de 2025</p>
+        
+    </header>
+
+    <main>
+	<div id="popup" class="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <img class="popup-content" id="expandedImage">
+        <div id="caption"></div>
+    </div>
+
+    <h3>Introdução</h3>
+    <p class="resumo">O Teste de Campo – TC consiste na realização do Laboratório Experimental do SPV
+        previsto com usuários leigos convidados e demais alunos da turma.</p>
+    <p class="resumo">No nosso caso, os testes foram realizados com, pelo menos, um integrante de cada equipe da nossa turma, com exceção de um dos grupos.</p>
+    
+
+    <h3>Métodos</h3>
+    <p class="resumo">Os usuários foram apresentados ao projeto conforme seção <a href="LEx.html">LEx</a>, com preenchimento de um formulário 
+    ao final do teste.</p>
+    <p class="resumo">Os resultados do formulário foram extraídos para uma planilha com as notas de cada usuário 
+        e os comentários e sugestões estão informados na seção abaixo.
+    </p>
+    <p class="resumo">Foto do projeto montado no laboratório:</p>
+    <div class="gallery">
+        <img src="img/projeto.png" class="perfil" onclick="expandImage(this)">
+    </div>
+
+    <p class="resumo">Vídeo de teste do sistema:</p>
+	<div class="video-container">
+        <video id="meuVideo" controls>
+            <source src="video/teste.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+    </div>
+
+    <h3>Resultados</h3>
+    <p class="resumo">A planilha com as notas pode ser baixada <a href="CV2025_N_notas_Equipe_PixelRangers.xlsx" download="CV2025_N_notas_Equipe_PixelRangers.xlsx">aqui</a>.</p>
+    <p class="resumo">A partir das notas, é possível notar que o programa atendeu satisfatóriamente o que foi proposto, embora melhorias sempre são consideradas. 
+        Entre as sugestões dos usuários, encontra-se "incluir uma caixa para limitar a luminosidade", dado que a estrutura do projeto não estava concluída até o momento, a caixa foi adicionada posteriormente.
+    </p>
+
+    </main>
+
+    <footer>
+        <p>Página confeccionada para a disciplina de Visão Computacional 2025.2</p>
+        <p>Professor: Celso Kurashima</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
+
+
+
