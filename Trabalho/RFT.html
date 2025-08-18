@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <title>Relatório Final do Trabalho</title>
+</head>
+
+<body>
+    
+    <header>
+        <a href="../index.html"><img class="ufabc" src="../assets/img/ufabc.png" alt="ufabc logo"></a>
+        <h1>Pixel Rangers</h1>
+        <h2>Relatório Final do Trabalho</h2>
+        <p>17 de Agosto de 2025</p>
+        
+    </header>
+
+    <main>
+	<div id="popup" class="popup">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <img class="popup-content" id="expandedImage">
+            <div id="caption"></div>
+        </div>
+        <h3>Introdução</h3>
+        <p class="resumo">A gestão incorreta de resíduos hospitalares representa um grave risco à saúde pública e ao meio ambiente. Materiais como seringas, luvas contaminadas, frascos de medicamentos e resíduos biológicos devem ser descartados de acordo com regras rígidas da ANVISA (RDC nº 222/2018), mas muitas vezes essa separação depende da ação manual de funcionários que, sob pressão e carga horária elevada, podem cometer erros. 
+                O problema, portanto, é a ausência de um sistema automatizado e contínuo que identifique, classifique e destine corretamente os resíduos hospitalares no ponto de descarte, evitando contaminações cruzadas, acidentes com material perfurocortante e impactos ambientais.</p>
+        <p class="resumo">A partir da entrevista realizada pelo integrante Caio Vilor Brandão, foi identificada a possibilidade da aplicação do projeto proposto.</p>
+        <p class="resumo">Nos hospitais, clínicas e laboratórios, há uma variedade de tipos de lixo — de baixo risco (ex.: luvas não contaminadas) a altamente perigosos (ex.: agulhas com resíduos biológicos). A separação incorreta pode gerar multas, riscos ocupacionais, e ineficiência no tratamento dos resíduos. 
+            Pesquisas demonstram que mais de 25% dos acidentes com material biológico em ambientes hospitalares envolvem falhas no descarte (Fonte: Silva et al., 2020, Revista Brasileira de Enfermagem). Além disso, tecnologias com visão computacional já vêm sendo aplicadas para classificação de lixo doméstico com bons resultados (Zhang et al., 2021, Waste Management Journal), o que valida o uso de câmeras e inteligência artificial para categorização visual.</p>
+        <p class="resumo">Objetivos:</p>
+        <ul>
+            <li>Desenvolver um sistema automatizado em Python com OpenCV que:</li>
+            <li>Detecte objetos (resíduos hospitalares) através de uma câmera;</li>
+            <li>Classifique o objeto identificado quanto ao tipo (ex.: luvas, seringas, frascos) e ao grau de risco (baixo, moderado, alto);</li>
+            <li>Ative um servomotor que direciona fisicamente o item descartado para a compartimentalização correta (baixa, média ou alta periculosidade).</li>
+        </ul>
+
+        <p class="resumo">Qual o benefício do sistema ao usuário?</p>
+        <ul>
+            <li>Segurança: Reduz o contato humano com materiais contaminantes.</li>
+            <li>Eficiência: Automatiza a triagem sem depender de treinamento humano.</li>
+            <li>Conformidade legal: Facilita o cumprimento das exigências legais de descarte.</li>
+            <li>Custo-benefício: Utiliza componentes acessíveis (Raspberry Pi, servos, webcam USB, etc.).</li>
+            <li>Escalabilidade: Pode ser implementado em pequenas clínicas ou grandes hospitais.</li>
+        </ul>
+
+        <h3>Materiais e métodos</h3>
+        <p class="resumo">Técnicas e Ferramentas Utilizadas para o Código</p>
+        <ul>
+            <li>OpenCV – Captura de vídeo da webcam, manipulação de imagens, detecção de contornos, desenho de caixas e texto na tela.</li>
+            <li>Python 3 – Linguagem principal utilizada.</li>
+	    <li>PyTorch – Criação, modificação e execução da rede neural (ResNet18).</li>
+	    <li>Albumentations – Redimensionamento, normalização e conversão de imagens para tensor PyTorch antes da classificação.</li>
+	    <li>NumPy – Operações numéricas e manipulação de arrays.</li>
+	    <li>Pickle – Carregamento e salvamento de objetos Python.</li>
+        </ul>
+
+        <p class="resumo">Funcionamento</p>
+        <ul>
+            <li>Inicialmente, é utilizado o código "auto_calibrate.py" para realizar a calibração da câmera com base , gerando o arquivo final calib.npz;</li>
+	    <li>Em seguida, é utilizado o código "record_class" para tirar fotos dos objetos desejados;</li>
+	    <li>O código "prepare_dataset" é então utilizado para separar e tratar as imagens, diminuindo seus tamanhos e deixando-as mais leves;</li>
+	    <li>O código "train" realiza o treinamento com base nas imagens processadas, gerando arquivos com os dados necessários (pasta models);</li>
+	    <li>Por fim, o algoritmo "inference" realiza a classificação em tempo real dos objetos com base nos dados gerados pelo código anterior, exibindo na tela o grau de precisão da medição e a classificação do objeto.</li>
+        </ul>
+
+        <p class="resumo">Tipos de Lixo e Classes no Sistema</p>
+        <ul>
+            <li>Classe 0: Lixo não identificado.</li>
+            <li>Classe 1: Seringas/agulhas.</li>
+            <li>Classe 2: Luvas contaminadas.</li>
+            <li>Classe 3: Máscaras.</li>
+            <li>Classe 4: Gaze/curativos.</li>
+            <li>Classe 5: Frascos com fluidos.</li>
+        </ul>
+
+        <p class="resumo">Diagrama de blocos</p>
+        <div class="gallery">
+            <img src="img/diagrama.png" class="perfil" onclick="expandImage(this)">
+        </div>
+
+        <p class="resumo">Fluxograma Simplificado do Sistema</p>
+        <div class="gallery">
+            <img src="img/fluxograma.png" class="perfil" onclick="expandImage(this)">
+        </div>
+
+
+        <p class="resumo">lista dos arquivos:</p>
+        <ul>
+            <li>Programas:</li>
+            <li>train_new.py</li>
+            <li>record_class.py</li>
+            <li>prepare_dataset_new.py</li>
+            <li>inference_new.py</li>
+            <li>capture_calibration.py</li>
+            <li>auto_calibrate.py</li>
+            <li>Fotos para treinamento (pasta data->raw)</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+
+        </ul>
+
+        <h3>Laboratorio Experimental</h3>
+
+        <h3>Conclusões</h3>
+	
+	    <h3>Referências Bibliográficas</h3>
+
+        <h3>Anexo</h3>
+
+    </main>
+
+    <footer>
+        <p>Página confeccionada para a disciplina de Visão Computacional 2025.2</p>
+        <p>Professor: Celso Kurashima</p>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
+
+
+
